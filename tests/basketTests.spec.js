@@ -8,7 +8,7 @@ test.beforeEach( async ({ page }) => {
 
         const mainPage = new MainPage(page);
 
-        mainPage.add();
+        mainPage.addInBasket();
         await expect(page.getByText('2Bag')).toBeVisible();
         await page.reload({ waitUntil: 'domcontentloaded' });
     })

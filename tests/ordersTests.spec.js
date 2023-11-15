@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
-import { MainPage, SignIn, Address } from "../src/pages/index";
+import { MainPage, SignIn, Address, BasketPage } from "../src/pages/index";
 import { AddressBuilder } from '../src/helpers/user.helper';
 
 test.beforeEach( async ({ page }) => {
@@ -26,10 +26,12 @@ test.describe('Заказ и товары', () => {
         
         await page.goto('https://bstackdemo.com/');
 
-        const addressPage = new Address(page);        
+        const addressPage = new Address(page);    
+        const mainPage = new MainPage(page);
+    
         const newAddress = new AddressBuilder().setAddress().setFirstName().setLastName().setPostalCode().setState().build();
 
-        await page.locator('[id="\\31 "]').getByText('Add to cart').click();
+        mainPage.addInBasket();
         await page.getByText('Checkout').click();
 
         await addressPage.fullForm(newAddress.firstName, newAddress.lastName, newAddress.address, newAddress.state, newAddress.postalCode);
@@ -45,12 +47,9 @@ test.describe('Заказ и товары', () => {
 
         const mainPage = new MainPage(page);
 
-        await page.locator('[id="\\32 "]').getByLabel('delete').click();
-        await page.locator('[id="\\33 "]').getByLabel('delete').click();
-        await page.locator('[id="\\34 "]').getByLabel('delete').click();
         mainPage.favourite();
 
-        await expect(page.getByText('3 Product(s) found.')).toBeVisible();
+        await expect(page.getByText('2 Product(s) found.')).toBeVisible();
     })
 
     test('Неавторизованный пользователь не может сделать заказ', async ({ page }) => {
@@ -62,8 +61,8 @@ test.describe('Заказ и товары', () => {
         const mainPage = new MainPage(page);
 
         mainPage.logout();
+        mainPage.addInBasket();
 
-        await page.locator('[id="\\31 "]').getByText('Add to cart').click();
         await page.getByText('Checkout').click();
         await expect(page.getByRole('button', { name: 'Log In' })).toBeEnabled();
     })

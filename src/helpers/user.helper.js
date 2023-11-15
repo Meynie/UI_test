@@ -1,6 +1,6 @@
 import { faker, th } from '@faker-js/faker';
 
-const GetNewAddress = function GetNewUser(address, firstName, lastName, state, postalCode) {
+const GetNewAddress = function GetNewAddress(address, firstName, lastName, state, postalCode) {
   this.address = address;
   this.firstName = firstName;
   this.lastName = lastName;
@@ -31,8 +31,8 @@ export const AddressBuilder = function AddressBuilder() {
       return this;
     },
     build() {
-      const user = new GetNewAddress(this.address, this.firstName, this.lastName, this.state, this.postalCode);
-      return user;
+      const address = new GetNewAddress(this.address, this.firstName, this.lastName, this.state, this.postalCode);
+      return address;
     },
   };
 };
