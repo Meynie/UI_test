@@ -1,4 +1,4 @@
-import { faker, th } from '@faker-js/faker';
+import { faker } from '@faker-js/faker';
 
 const GetNewAddress = function GetNewAddress(address, firstName, lastName, state, postalCode) {
   this.address = address;

@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
-import { MainPage, SignIn, Address, BasketPage } from "../src/pages/index";
+import { MainPage, SignIn, Address } from "../src/pages/index";
 import { AddressBuilder } from '../src/helpers/user.helper';
 
 test.beforeEach( async ({ page }) => {
