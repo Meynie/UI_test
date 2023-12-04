@@ -14,7 +14,7 @@
 5. Кликнуть на поле **Last Name**
 6. Ввести `{last Name}` в поле **Last Name**
 7. Кликнуть на поле **Address**
-8. Ввести `{addres}` в поле **Address**
+8. Ввести `{address}` в поле **Address**
 9. Кликнуть на поле **State/Province**
 10. Ввести `{state}` в поле **State/Province**
 11. Кликнуть на поле **Postal Code**

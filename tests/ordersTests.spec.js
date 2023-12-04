@@ -24,8 +24,6 @@ test.describe('Заказ и товары', () => {
         await allure.epic('Оформление заказа');
         await allure.story('Успешное оформление заказа');
         
-        await page.goto('https://bstackdemo.com/');
-
         const addressPage = new Address(page);    
         const mainPage = new MainPage(page);
     
@@ -43,25 +41,21 @@ test.describe('Заказ и товары', () => {
         await allure.epic('Избранное');
         await allure.story('Добавить в избранное товары');
         
-        await page.goto('https://bstackdemo.com/');
-
         const mainPage = new MainPage(page);
 
-        mainPage.favourite();
+        await mainPage.favourite();
 
         await expect(page.getByText('2 Product(s) found.')).toBeVisible();
     })
 
     test('Неавторизованный пользователь не может сделать заказ', async ({ page }) => {
         await allure.epic('Оформление заказа');
-        await allure.story('Нужно авторизоваться перед оформлением заказа');
-
-        await page.goto('https://bstackdemo.com/');
+        await allure.story('Неавторизованный пользователь не может сделать заказ');
         
         const mainPage = new MainPage(page);
 
-        mainPage.logout();
-        mainPage.addInBasket();
+        await mainPage.logout();
+        await mainPage.addInBasket();
 
         await page.getByText('Checkout').click();
         await expect(page.getByRole('button', { name: 'Log In' })).toBeEnabled();

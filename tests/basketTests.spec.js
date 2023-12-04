@@ -15,11 +15,9 @@ test.beforeEach( async ({ page }) => {
 });
 
 test.describe('Работа с корзиной', () => {
-    test('Пользователь может удалить товары из корзины ', async ({ page }) => {
+    test('Пользователь может удалить товары из корзины', async ({ page }) => {
         await allure.epic('Работа с корзиной');
-        await allure.story('Удаление  товаров');
-
-        await page.goto('https://bstackdemo.com/');
+        await allure.story('Удалить товары из корзины');
 
         const basketPage = new BasketPage(page);
         basketPage.openBasket();
@@ -31,8 +29,6 @@ test.describe('Работа с корзиной', () => {
     test('Пользователь может изменить число товаров в корзине', async ({ page }) => {
         await allure.epic('Работа с корзиной');
         await allure.story('Добавление товаров в корзине');
-
-        await page.goto('https://bstackdemo.com/');
 
         const basketPage = new BasketPage(page);
         basketPage.openBasket();

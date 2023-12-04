@@ -8,8 +8,7 @@ class MainPage {
     this.logoutButton = page.getByRole('link', { name: 'Logout' });
     this.choosePhone1 = page.locator('[id="\\31 "]');
     this.choosePhone2 = page.locator('[id="\\32 "]');
-   // this.choosePhone3 = page.locator('[id="\\33 "]');
-
+    
     }
     async signin () {
         await this.signInButton.click();
@@ -28,11 +27,6 @@ class MainPage {
     async addInBasket () {
         await this.choosePhone1.getByText('Add to cart').click();
         await this.choosePhone2.getByText('Add to cart').click();
-    }
-    async addInFavourite () {
-        await this.choosePhone1.getByLabel('delete').click();
-        await this.choosePhone2.getByLabel('delete').click();
-        //await this.choosePhone3.getByLabel('delete').click();
     }
 }
 
