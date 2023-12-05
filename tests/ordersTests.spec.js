@@ -5,12 +5,11 @@ import { AddressBuilder } from '../src/helpers/user.helper';
 
 test.beforeEach( async ({ page }) => {
     await allure.step('Авторизация пользователя', async () => {
-        await page.goto('https://bstackdemo.com/');
 
         const mainPage = new MainPage(page);
         const signinPage = new SignIn(page);
         
-
+        await mainPage.open();
         await mainPage.signin();
         await signinPage.signin();    
 

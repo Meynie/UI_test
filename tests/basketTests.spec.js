@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
+
 import { MainPage, BasketPage } from '../src/pages/index';
 
 test.beforeEach( async ({ page }) => {
     await allure.step('Добавление товаров в корзину', async () => {
-        await page.goto('https://bstackdemo.com/');
-
         const mainPage = new MainPage(page);
 
-        mainPage.addInBasket();
+        await mainPage.open();
+        await mainPage.addInBasket();
         await expect(page.getByText('2Bag')).toBeVisible();
         await page.reload({ waitUntil: 'domcontentloaded' });
     })

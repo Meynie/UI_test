@@ -1,3 +1,5 @@
+import { MAIN_PAGE_URL } from "./const_page";
+
 class MainPage {
     constructor(page) 
     {
@@ -8,7 +10,9 @@ class MainPage {
     this.logoutButton = page.getByRole('link', { name: 'Logout' });
     this.choosePhone1 = page.locator('[id="\\31 "]');
     this.choosePhone2 = page.locator('[id="\\32 "]');
-    
+    }
+    async open () {
+        await this.page.goto(MAIN_PAGE_URL);
     }
     async signin () {
         await this.signInButton.click();
