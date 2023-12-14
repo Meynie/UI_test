@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
-import { MainPage, SignIn, Address, AddressPage } from "../src/pages/index";
+import { MainPage, SignIn, AddressPage } from "../src/pages/index";
 import { AddressBuilder } from '../src/helpers/user.helper';
 
 test.beforeEach( async ({ page }) => {
@@ -28,7 +28,7 @@ test.describe('Заказ и товары', () => {
     
         const newAddress = new AddressBuilder().setAddress().setFirstName().setLastName().setPostalCode().setState().build();
 
-        mainPage.addInBasket();
+        await mainPage.addInBasket();
         await page.getByText('Checkout').click();
 
         await addressPage.fullForm(newAddress.firstName, newAddress.lastName, newAddress.address, newAddress.state, newAddress.postalCode);
