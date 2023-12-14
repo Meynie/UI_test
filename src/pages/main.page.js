@@ -1,4 +1,4 @@
-import { MAIN_PAGE_URL } from "./const_page";
+import { MAIN_PAGE_URL } from "./const.page";
 
 class MainPage {
     constructor(page) 

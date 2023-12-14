@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { allure } from 'allure-playwright';
-import { MainPage, SignIn, Address } from "../src/pages/index";
+import { MainPage, SignIn, Address, AddressPage } from "../src/pages/index";
 import { AddressBuilder } from '../src/helpers/user.helper';
 
 test.beforeEach( async ({ page }) => {
@@ -23,7 +23,7 @@ test.describe('Заказ и товары', () => {
         await allure.epic('Оформление заказа');
         await allure.story('Успешное оформление заказа');
         
-        const addressPage = new Address(page);    
+        const addressPage = new AddressPage(page);    
         const mainPage = new MainPage(page);
     
         const newAddress = new AddressBuilder().setAddress().setFirstName().setLastName().setPostalCode().setState().build();

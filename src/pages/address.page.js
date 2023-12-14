@@ -1,4 +1,4 @@
-class Address {
+class AddressPage {
     constructor(page)
     {
         this.page = page;
@@ -25,4 +25,4 @@ class Address {
         }
 }
 
-export {Address}
+export {AddressPage}
