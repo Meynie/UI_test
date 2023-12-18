@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "report": "npx allure-commandline serve",
+    "test": "npx playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "@playwright/test": "^1.39.0",
-    "@types/node": "^20.9.0"
+    "@types/node": "^20.9.0",
+    "@faker-js/faker": "^8.3.1",
+    "allure-playwright": "^2.9.2"
   }
 }
